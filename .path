@@ -1,4 +1,11 @@
+
 # This loads nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## Unset in case NVM is not installed yet/correctly
+if [ -n "${NVM_DIR-}" ] && ! [ -d "${NVM_DIR}" ]; then
+  echo >&2 "You have \$NVM_DIR set to \"${NVM_DIR}\", but that directory does not exist."
+  unset NVM_DIR
+fi
