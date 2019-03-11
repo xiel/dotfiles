@@ -1,27 +1,37 @@
+#!/usr/bin/env bash
+
 # This loads nvm
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[[ -s "$NVM_DIR/nvm.sh" ]] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[[ -s "$NVM_DIR/bash_completion" ]] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+## Unset in case NVM is not installed yet/correctly
+if [[ -n "${NVM_DIR-}" ]] && ! [[ -d "${NVM_DIR}" ]]; then
+  echo >&2 "You have \$NVM_DIR set to \"${NVM_DIR}\", but that directory does not exist."
+  unset NVM_DIR
+fi
 
 # Calling nvm use automatically in a directory with a .nvmrc file
 # Put this into your $HOME/.zshrc to call nvm use automatically whenever you enter a directory that contains an .nvmrc file with a string telling nvm which node to use:
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+if [[ -n "${NVM_DIR-}" ]]; then
+	autoload -U add-zsh-hook
+	load-nvmrc() {
+	  local node_version="$(nvm version)"
+	  local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+	  if [[ -n "$nvmrc_path" ]]; then
+	    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+	    if [[ "$nvmrc_node_version" = "N/A" ]]; then
+	      nvm install
+	    elif [[ "$nvmrc_node_version" != "$node_version" ]]; then
+	      nvm use
+	    fi
+	  elif [[ "$node_version" != "$(nvm version default)" ]]; then
+	    echo "Reverting to nvm default version"
+	    nvm use default
+	  fi
+	}
+	add-zsh-hook chpwd load-nvmrc
+	load-nvmrc
+fi

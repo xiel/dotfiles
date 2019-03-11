@@ -1,3 +1,6 @@
+# Install/Update NVM
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+
 # Setup Shell + Terminal
 # adopted from: https://medium.com/@caulfieldOwen/youre-missing-out-on-a-better-mac-terminal-experience-d73647abf6d7
 # Install zsh shell
