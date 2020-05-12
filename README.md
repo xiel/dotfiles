@@ -36,6 +36,14 @@ git clone https://github.com/creationix/nvm.git .nvm
 
 ```
 
+### Oh My Zsh Installation
+
+Oh My Zsh is installed by running one of the following commands in your terminal. You can install this via the command-line with either curl or wget.
+
+```bash
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
 ### Git-free install
 
 To install these dotfiles without Git:
