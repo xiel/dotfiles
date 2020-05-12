@@ -47,7 +47,7 @@ brew install php
 brew install gmp
 
 # Add Webdev stuff
-brew install yarn --ignore-dependencies
+brew install yarn
 
 # Install font tools.
 # brew tap bramstein/webfonttools
