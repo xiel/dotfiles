@@ -42,3 +42,8 @@ if [[ -n "${NVM_DIR-}" ]]; then
 	add-zsh-hook chpwd load-nvmrc
 	load-nvmrc
 fi
+
+# For direnv to work properly it needs to be hooked into the shell.
+# Before each prompt, direnv checks for the existence of a .envrc file in the current and parent directories.
+# If the file exists (and is authorized), it is loaded into a bash sub-shell and all exported variables are then captured by direnv and then made available to the current shell.
+eval "$(direnv hook zsh)"
