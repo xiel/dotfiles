@@ -2,6 +2,7 @@
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$PATH:${HOME}/Projects/flutter/bin"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # tell RubyGems to install into user directory
 export GEM_HOME=$HOME/.gem
