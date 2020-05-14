@@ -3,6 +3,10 @@
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export PATH="$PATH:${HOME}/Projects/flutter/bin"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$PATH:${HOME}/Library/Python/3.7/bin"
+
+# Activate virtual env ?!
+. $HOME/Projects/BahnID/python3-virtualenv/bin/activate
 
 # tell RubyGems to install into user directory
 export GEM_HOME=$HOME/.gem
