@@ -32,8 +32,14 @@ brew install screen
 brew install php
 brew install gmp
 
+# open current folder in iTerm
+brew cask install openinterminal-lite
+
 # Add Webdev stuff
 brew install yarn
+
+# Install great Spaceship Prompt (git, node info etc.) https://github.com/denysdovhan/spaceship-prompt
+yarn add -g spaceship-prompt
 
 # Install other useful binaries.
 brew install git
